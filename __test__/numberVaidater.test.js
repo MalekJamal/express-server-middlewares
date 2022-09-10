@@ -12,7 +12,7 @@ describe("Test validate-number middleware", () => {
         const res = await request.get('/square').query('num=5');
 
         expect(res.status).toEqual(200);
-        expect(res.text).toEqual('25')
+        expect(res.text).toEqual('{num: 25}');
 
     });
 
