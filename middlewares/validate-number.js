@@ -1,13 +1,14 @@
 'use strict';
 
-module.exports = (num) => {
-    return (req, res, next) => {
-        
-        if (typeof (num) === 'number') {
-            res.json({num: num*num});
-            next();
-        } else {
-            next(`${num} is not number`);
-        }
+module.exports = (req, res, next) => {
+
+    const { num } = req.query;
+    const regex = /^\d+$/;
+
+    if (regex.test(num)) {
+        next();
+    } else {
+        next(`Your input is not number, enter a valid data`);
     }
+
 }

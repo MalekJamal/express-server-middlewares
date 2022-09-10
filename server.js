@@ -13,10 +13,8 @@ app.get('/', (req, res) => {
 });
 
 const validateNumber = require('./middlewares/validate-number');
-app.get('/square', validateNumber(4), (req, res) => {
-    const num = req.query;
-    res.status(200).json({ num: num * num });
-});
+const handelGetNumber = require('./routes/handleGetNumber');
+app.get('/square', validateNumber, handelGetNumber);
 
 // errors handler
 const serverErrorHandler = require('./error-handlers/500');
